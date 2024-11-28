@@ -1,12 +1,17 @@
-import type { Product } from '@/types';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import Colors from '../constants/Colors';
+import Colors from '@/constants/Colors';
 
-const ProductListItem = ({ product }: { product: Product; }) => {
+import { Image, StyleSheet, Text, View } from 'react-native';
+import type { Product } from 'types';
+
+export const defaultPizzaImageUri = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/pizza.png';
+type ProductListItemProps = {
+  product: Product;
+};
+const ProductListItem = ({ product }: ProductListItemProps) => {
   return (
     <>
       <View style={styles.container}>
-        <Image source={{ uri: product?.image }} alt={product?.name} style={styles.image} />
+        <Image source={{ uri: product?.image || defaultPizzaImageUri }} alt={product?.name} style={styles.image} />
         <Text style={styles.title}>{product.name}</Text>
         <Text style={styles.price}>${product.price}</Text>
       </View>

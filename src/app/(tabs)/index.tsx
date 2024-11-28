@@ -1,11 +1,15 @@
 import products from '@/assets/data/products';
 import ProductListItem from '@/components/ProductListItem';
-import { View } from 'react-native';
+import { FlatList } from 'react-native';
 export default function TabOneScreen() {
   return (
-    <View>
-      <ProductListItem product={products[0]} />
-      <ProductListItem product={products[1]} />
-    </View>
+    <FlatList
+      data={products}
+      renderItem={({ item }) => <ProductListItem product={item} />}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={2}
+      contentContainerStyle={{ gap: 10, padding: 10 }} // Gap in row + padding around the whole flat list
+      columnWrapperStyle={{ gap: 10 }} // Gap in column
+    />
   );
 }

@@ -11,7 +11,12 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
   return (
     <>
       <View style={styles.container}>
-        <Image source={{ uri: product?.image || defaultPizzaImageUri }} alt={product?.name} style={styles.image} />
+        <Image
+          source={{ uri: product?.image || defaultPizzaImageUri }}
+          alt={product?.name}
+          style={styles.image}
+          resizeMode="contain"
+        />
         <Text style={styles.title}>{product.name}</Text>
         <Text style={styles.price}>${product.price}</Text>
       </View>
@@ -24,6 +29,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 10,
     borderRadius: 20,
+    flex: 1, // split equally the space between siblings
+    maxWidth: '50%', // to be sure that if the number of product is odd, the last product will occupy only 1 column
   },
   image: {
     width: '100%',

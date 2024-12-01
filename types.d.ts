@@ -47,3 +47,20 @@ export type Profile = {
   id: string;
   group: string;
 };
+
+
+export type ModalProps = {
+  modalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  animation: 'none' | 'slide' | 'fade' | undefined;
+  title: string;
+  message: string;
+  textStyle1: StyleProp<TextStyle> | ((state: PressableStateCallbackType) => StyleProp<TextStyle>);
+  textStyle2: StyleProp<TextStyle> | ((state: PressableStateCallbackType) => StyleProp<TextStyle>) | undefined;
+  buttonStyle1: StyleProp<ViewStyle> | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
+  buttonStyle2: StyleProp<ViewStyle> | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>) | undefined;
+  buttonText1: string;
+  buttonText2: string | null;
+  action1: () => void;
+  action2: () => void;
+};

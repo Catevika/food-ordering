@@ -1,16 +1,18 @@
+import AlertModal from '@/components/AlertModal';
 import Button from '@/components/Button';
 import { defaultPizzaImageUri } from '@/components/ProductListItem';
 import Colors from '@/constants/Colors';
 import * as ImagePicker from 'expo-image-picker';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { Alert, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const CreateProductScreen = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [error, setError] = useState('');
   const [image, setImage] = useState<string | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const { id } = useLocalSearchParams();
   const isUpdating = !!id;
@@ -61,20 +63,11 @@ const CreateProductScreen = () => {
   };
 
   const onDelete = () => {
-    console.log('DELETING!!');
+    console.warn('DELETING!!');
   };
 
   const confirmDelete = () => {
-    Alert.alert('Confirm', 'Are you sure you want to delete this product?', [
-      {
-        text: 'Cancel',
-      },
-      {
-        text: 'Delete',
-        style: 'destructive',
-        onPress: onDelete,
-      }
-    ]);
+    setModalVisible(true);
   };
 
   const pickImage = async () => {
@@ -113,6 +106,7 @@ const CreateProductScreen = () => {
       {error && <Text style={{ color: 'red' }}>{error}</Text>}
       <Button onPress={onSubmit} text={isUpdating ? 'Update' : 'Create'} />
       {isUpdating && <Text style={styles.selectText} onPress={confirmDelete}>Delete</Text>}
+      <AlertModal modalVisible={modalVisible} setModalVisible={setModalVisible} animation='fade' title='Confirm' message='Are you sure you want to delete this product?' textStyle1={styles.textStyle1} buttonStyle1={styles.buttonStyle1} buttonText1='Cancel' action1={() => setModalVisible(false)} textStyle2={styles.textStyle2} buttonStyle2={styles.buttonStyle2} buttonText2='Delete' action2={onDelete} />
     </View>
   );
 };
@@ -144,7 +138,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginVertical: 10,
     color: Colors.light.tint,
-  }
+  },
+  textStyle1: {
+    color: Colors.light.tint,
+  },
+  buttonStyle1: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+    backgroundColor: '#fff',
+    marginRight: 20
+  },
+  textStyle2: {
+    color: '#fff',
+  },
+  buttonStyle2: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+    backgroundColor: '#C70039'
+  },
 
 });
 

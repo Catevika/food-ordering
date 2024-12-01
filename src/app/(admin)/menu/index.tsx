@@ -2,6 +2,7 @@ import products from '@/assets/data/products';
 import ProductListItem from '@/components/ProductListItem';
 import { StatusBar } from 'expo-status-bar';
 import { FlatList } from 'react-native';
+
 export default function MenuIndex() {
   return (
     <>

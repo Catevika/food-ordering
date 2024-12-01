@@ -1,10 +1,12 @@
 import { Link } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import Button from '../components/Button';
 
 const index = () => {
   return (
     <View style={styles.container}>
+      <StatusBar style='auto' />
       <Link href={'/(user)'} asChild>
         <Button text="User" />
       </Link>

@@ -3,7 +3,7 @@ import { Link, useSegments } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text } from 'react-native';
 import type { Product } from 'types';
 
-export const defaultPizzaImageUri = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/pizza.png';
+export const defaultPizzaImageUri = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png';
 
 type ProductListItemProps = {
   product: Product;

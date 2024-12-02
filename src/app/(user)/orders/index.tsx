@@ -1,4 +1,4 @@
-import orders from '@/assets/data/orders';
+import { orders } from '@/assets/data/orders';
 import OrderListItem from '@/components/OrderListItem';
 import { StatusBar } from 'expo-status-bar';
 import { FlatList } from 'react-native';

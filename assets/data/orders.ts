@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
-import type { Order } from 'types';
+import type { Order, OrderStatus } from 'types';
 import products from './products';
 
 const now = dayjs();
 
-const orders: Order[] = [
+export const orders: Order[] = [
   {
     id: 23123,
     created_at: now.subtract(1, 'hour').toISOString(),
@@ -82,4 +82,5 @@ const orders: Order[] = [
   },
 ];
 
-export default orders;
+export const orderStatusList: OrderStatus[] = ['New', 'Cooking', 'Delivering', 'Delivered'];
+

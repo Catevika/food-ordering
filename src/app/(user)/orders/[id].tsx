@@ -1,4 +1,4 @@
-import orders from '@/assets/data/orders';
+import { orders } from '@/assets/data/orders';
 import OrderItemListItem from '@/components/OrderItemListItem';
 import SingleOrderItem from '@/components/SingleOrderItem';
 import { Stack, useLocalSearchParams } from 'expo-router';

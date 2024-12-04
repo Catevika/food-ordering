@@ -8,9 +8,8 @@
       "@/components/*": [ "src/components/*" ],
       "@/assets/*": [ "assets/*" ],
       "@/constants/*": [ "src/constants/*" ],
+      "@/lib/*": [ "src/lib/*" ],
     },
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
   },
   "include": [
     "**/*.ts",

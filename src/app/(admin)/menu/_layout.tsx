@@ -1,3 +1,4 @@
+import SignOutButton from '@/components/SignOutButton';
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
 import { FontAwesome } from '@expo/vector-icons';
@@ -12,16 +13,19 @@ export default function MenuStack() {
     <Stack>
       <Stack.Screen name='index' options={{
         title: 'Menu', headerRight: () => (
-          <Pressable onPressIn={() => router.push('/(admin)/menu/create')}>
-            {({ pressed }) => (
-              <FontAwesome
-                name="plus-square-o"
-                size={25}
-                color={Colors[colorScheme ?? 'light'].tint}
-                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-              />
-            )}
-          </Pressable>
+          <>
+            <Pressable onPressIn={() => router.push('/(admin)/menu/create')}>
+              {({ pressed }) => (
+                <FontAwesome
+                  name="plus-square-o"
+                  size={25}
+                  color={Colors[colorScheme ?? 'light'].tint}
+                  style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                />
+              )}
+            </Pressable>
+            <SignOutButton />
+          </>
         ),
       }} />
     </Stack>

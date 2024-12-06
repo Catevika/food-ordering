@@ -1,9 +1,14 @@
-import products from '@/assets/data/products';
+import { useProductList } from '@/api/products';
 import ProductListItem from '@/components/ProductListItem';
 import { StatusBar } from 'expo-status-bar';
-import { FlatList } from 'react-native';
+import { ActivityIndicator, FlatList, Text } from 'react-native';
 
 export default function MenuIndex() {
+  const { data: products, error, isLoading } = useProductList();
+
+  if (isLoading) <ActivityIndicator />;
+  if (error) return <Text>Failed to fetch products</Text>;
+
   return (
     <>
       <StatusBar style='auto' />

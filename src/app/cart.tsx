@@ -17,7 +17,7 @@ export default function CartScreen() {
         contentContainerStyle={{ padding: 10, gap: 10 }}
       />
       <View style={styles.backToMenu}>
-        <Link style={styles.link} href="/menu">Add a pizza</Link>
+        <Link style={styles.link} href="/(user)/menu">Add a pizza</Link>
       </View>
       <Text style={styles.text}>Total: ${total.toFixed(2)}</Text>
       <Button text="Checkout" />

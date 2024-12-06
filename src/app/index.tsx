@@ -6,6 +6,8 @@ import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import Button from '../components/Button';
 
+// TODO - See all the onPress elements to add a disabled or at least a changing opacity
+
 const index = () => {
   const { session, loading, isAdmin } = useAuth();
 
@@ -29,9 +31,7 @@ const index = () => {
       <Link href={'/(user)/menu'} asChild>
         <Button text="User" />
       </Link>
-
       <Pressable onPressIn={() => {
-        console.log('signed out');
         supabase.auth.signOut();
       }} style={styles.buttonContainer}>{({ pressed }) => (
         <Text style={[styles.buttonText, { opacity: pressed ? 0.5 : 1 }]}>Sign out</Text>

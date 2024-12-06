@@ -1,6 +1,7 @@
 import { useColorScheme } from '@/components/useColorScheme.web';
 import AuthProvider from '@/providers/AuthProvider';
 import CartProvider from '@/providers/CartProvider';
+import QueryProvider from '@/providers/QueryProvider';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -15,7 +16,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(user)',
+  initialRouteName: '/',
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -51,15 +52,18 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <AuthProvider>
-        <CartProvider>
-          <Stack>
-            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-            <Stack.Screen name="(admin)" options={{ headerShown: false }} />
-            <Stack.Screen name="(user)" options={{ headerShown: false }} />
+        <QueryProvider>
+          <CartProvider>
+            <Stack>
+              <Stack.Screen name="index" options={{ headerBackVisible: false }} />
+              <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+              <Stack.Screen name="(admin)" options={{ headerShown: false }} />
+              <Stack.Screen name="(user)" options={{ headerShown: false }} />
 
-            <Stack.Screen name="cart" options={{ presentation: 'modal' }} />
-          </Stack>
-        </CartProvider>
+              <Stack.Screen name="cart" options={{ presentation: 'modal' }} />
+            </Stack>
+          </CartProvider>
+        </QueryProvider>
       </AuthProvider>
     </ThemeProvider>
   );

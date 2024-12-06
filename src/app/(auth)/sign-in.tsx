@@ -2,13 +2,23 @@ import Button from '@/components/Button';
 import Colors from '@/constants/Colors';
 import supabase from '@/lib/supabase';
 import { Link, Stack } from 'expo-router';
-import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
+import { BackHandler, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const SignInScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      return true; // Prevent default back button behavior
+    });
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
 
   const resetSignIn = () => {
     setEmail('');
@@ -25,7 +35,8 @@ const SignInScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: 'Sign in' }} />
+      <StatusBar style='auto' />
+      <Stack.Screen options={{ title: 'Sign in', headerBackVisible: false }} />
 
       <Text style={styles.label}>Email</Text>
       <TextInput

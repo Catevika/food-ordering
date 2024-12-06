@@ -1,6 +1,5 @@
 import { useCart } from '@/providers/CartProvider';
 import { FontAwesome } from '@expo/vector-icons';
-import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import type { CartItem } from 'types';
 import Colors from '../constants/Colors';

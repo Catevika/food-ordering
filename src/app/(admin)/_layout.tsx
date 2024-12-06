@@ -22,7 +22,7 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].background,
         tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
-        tabBarStyle: { backgroundColor: Colors[colorScheme ?? 'light'].tint },
+        tabBarStyle: { backgroundColor: Colors[colorScheme ?? 'light'].tint, paddingBottom: 10 },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
@@ -32,6 +32,7 @@ export default function TabLayout() {
         name="index"  // This is the name of the page and must match the url from root
         options={{
           href: null,
+          headerShown: false,
         }}
       />
 

@@ -1,9 +1,10 @@
-export type Product = {
-  id: number;
-  image: string;
-  name: string;
-  price: number;
-};
+import { Database } from './database.types';
+
+// Helpers for supabase-js to shorten types, ex: Tables<'products'>
+export type Tables<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Row'];
+export type Enums<T extends keyof Database['public']['Enums']> =
+  Database['public']['Enums'][T];
 
 export type PizzaSize = 'S' | 'M' | 'L' | 'XL';
 
@@ -38,7 +39,7 @@ export type OrderItem = {
 
 export type Profile = {
   id: string;
-  group: string;
+  group: string | null;
 };
 
 

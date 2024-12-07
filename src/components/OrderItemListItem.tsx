@@ -1,3 +1,4 @@
+import { defaultPizzaImageUri } from '@/components/ProductListItem';
 import Colors from '@/constants/Colors';
 import { Image, StyleSheet, Text, View } from "react-native";
 import type { OrderItem } from 'types';
@@ -5,7 +6,7 @@ import type { OrderItem } from 'types';
 const OrderItemListItem = ({ order }: { order: OrderItem; }) => {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: order.products.image }} style={styles.image} />
+      <Image source={{ uri: order.products.image || defaultPizzaImageUri }} style={styles.image} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{order.products.name}</Text>
         <View style={{ flexDirection: 'row' }}>

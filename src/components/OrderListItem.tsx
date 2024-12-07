@@ -1,6 +1,6 @@
 import daysjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Link, useSegments } from 'expo-router';
+import { Link, useSegments, type ExternalPathString } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import type { Order } from 'types';
 
@@ -13,8 +13,10 @@ daysjs.extend(relativeTime);
 const OrderListItem = ({ order }: OrderListItemProps) => {
   const segments = useSegments();
 
+  const orderUrl = `/${segments[0]}/orders/${order.id.toString()}` as ExternalPathString;
+
   return (
-    <Link href={`/${segments[0]}/orders/${order.id}`} asChild>
+    <Link href={orderUrl} asChild>
       <Pressable style={styles.container}>
         <View style={{ flexDirection: 'column' }}>
           <Text style={styles.title}>Order #{order.id}</Text>

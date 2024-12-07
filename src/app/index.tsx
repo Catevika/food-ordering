@@ -6,8 +6,6 @@ import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import Button from '../components/Button';
 
-// TODO - See all the onPress elements to add a disabled or at least a changing opacity
-
 const index = () => {
   const { session, loading, isAdmin } = useAuth();
 

@@ -1,10 +1,11 @@
+import type { Tables } from '@/database.types';
 import { randomUUID } from 'expo-crypto';
 import { createContext, useContext, useMemo, useState, type PropsWithChildren } from 'react';
-import type { CartItem, Product } from 'types';
+import type { CartItem } from 'types';
 
 type CartType = {
   items: CartItem[];
-  addItem: (product: Product, size: CartItem['size']) => void;
+  addItem: (product: Tables<'products'>, size: CartItem['size']) => void;
   updateQuantity: (id: string, quantity: -1 | 1) => void;
   total: number;
 };
@@ -19,7 +20,7 @@ export const CartContext = createContext<CartType>({
 const CartProvider = ({ children }: PropsWithChildren) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const addItem = (product: Product, size: CartItem['size']) => {
+  const addItem = (product: Tables<'products'>, size: CartItem['size']) => {
     const existingItem = items.find(item => item.product_id === product.id && item.size === size);
     if (existingItem) {
       updateQuantity(existingItem.id, 1);

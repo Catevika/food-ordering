@@ -50,6 +50,10 @@ export default function AuthProvider({ children }: PropsWithChildren) {
           .select('*')
           .eq('id', session.user.id)
           .single();
+
+        if (!data) {
+          throw Error('Profile not found');
+        };
         setProfile(data);
       };
 

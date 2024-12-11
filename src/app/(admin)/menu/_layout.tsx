@@ -1,4 +1,3 @@
-import SignOutButton from '@/components/SignOutButton';
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
 import { FontAwesome } from '@expo/vector-icons';
@@ -37,7 +36,6 @@ export default function MenuStack() {
                 />
               )}
             </Pressable>
-            <SignOutButton />
           </>
         ),
       }} />

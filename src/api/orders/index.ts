@@ -18,8 +18,6 @@ export const useAdminOrderList = ({ archived = false }) => {
 export const useProfileOrderList = () => {
   const { session } = useAuth();
   const id = session?.user.id;
-  if (!id) throw new Error('No user id');
-
 
   return useQuery({
     queryKey: ['orders', { userId: id }],

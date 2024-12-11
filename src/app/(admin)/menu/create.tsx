@@ -89,9 +89,10 @@ const CreateProductScreen = () => {
     });
   };
 
-  const onUpdate = () => {
+  const onUpdate = async () => {
     if (!validateInput) return;
-    updateProduct({ id, name, image, price: parseFloat(price) }, {
+    const imagePath = await uploadImage();
+    updateProduct({ id, name, image: imagePath, price: parseFloat(price) }, {
       onSuccess: () => {
         resetFields();
         router.back();

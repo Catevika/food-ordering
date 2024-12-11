@@ -1,5 +1,5 @@
+import type { Order, OrderStatus } from '@/types';
 import dayjs from 'dayjs';
-import type { Order, OrderStatus } from 'types';
 import products from './products';
 
 const now = dayjs();

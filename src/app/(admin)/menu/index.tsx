@@ -1,7 +1,7 @@
 import { useProductList } from '@/api/products';
 import ProductListItem from '@/components/ProductListItem';
 import { StatusBar } from 'expo-status-bar';
-import { ActivityIndicator, FlatList, Text } from 'react-native';
+import { ActivityIndicator, FlatList, Platform, Text } from 'react-native';
 
 export default function MenuIndex() {
   const { data: products, error, isLoading } = useProductList();
@@ -11,7 +11,8 @@ export default function MenuIndex() {
 
   return (
     <>
-      <StatusBar style='auto' />
+      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+
       <FlatList
         data={products}
         renderItem={({ item }) => <ProductListItem product={item} />}

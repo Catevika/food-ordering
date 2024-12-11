@@ -11,7 +11,7 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={28} style={{ marginBottom: -10 }} {...props} />;
 }
 
 export default function TabLayout() {
@@ -20,9 +20,9 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].background,
-        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
-        tabBarStyle: { backgroundColor: Colors[colorScheme ?? 'light'].tint, paddingBottom: 10 },
+        tabBarActiveTintColor: '#fff',
+        tabBarInactiveTintColor: '#b7fcfd',
+        tabBarStyle: { backgroundColor: Colors[colorScheme ?? 'light'].tint, height: 60, },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),

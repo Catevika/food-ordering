@@ -1,14 +1,11 @@
 import SignOutButton from '@/components/SignOutButton';
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
-import { useAuth } from '@/providers/AuthProvider';
 import { FontAwesome } from '@expo/vector-icons';
 import { Stack, useRouter } from 'expo-router';
 import { Pressable } from 'react-native';
 
 export default function MenuStack() {
-  const { isAdmin } = useAuth();
-
   const colorScheme = useColorScheme();
   const router = useRouter();
 

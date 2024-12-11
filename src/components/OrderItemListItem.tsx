@@ -1,20 +1,23 @@
 import { defaultPizzaImageUri } from '@/components/ProductListItem';
 import Colors from '@/constants/Colors';
+import type { Tables } from '@/types';
 import { Image, StyleSheet, Text, View } from "react-native";
-import type { OrderItem } from 'types';
 
-const OrderItemListItem = ({ order }: { order: OrderItem; }) => {
+type OrderItemListItemProps = {
+  item: Tables<'order_items'> & { products: Tables<'products'> | null; };
+};
+const OrderItemListItem = ({ item }: OrderItemListItemProps) => {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: order.products.image || defaultPizzaImageUri }} style={styles.image} />
+      <Image source={{ uri: item?.products?.image || defaultPizzaImageUri }} style={styles.image} />
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{order.products.name}</Text>
+        <Text style={styles.title}>{item?.products?.name}</Text>
         <View style={{ flexDirection: 'row' }}>
-          <Text style={styles.price}>${order.products.price}</Text>
-          <Text style={styles.time}>Size: {order.size}</Text>
+          <Text style={styles.price}>${item?.products?.price}</Text>
+          <Text style={styles.time}>Size: {item.size}</Text>
         </View>
       </View>
-      <Text style={styles.status}>{order.quantity}</Text>
+      <Text style={styles.status}>{item.quantity}</Text>
     </View>
   );
 };

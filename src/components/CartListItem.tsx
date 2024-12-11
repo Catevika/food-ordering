@@ -1,7 +1,7 @@
 import { useCart } from '@/providers/CartProvider';
+import type { CartItem } from '@/types';
 import { FontAwesome } from '@expo/vector-icons';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import type { CartItem } from 'types';
 import Colors from '../constants/Colors';
 import { defaultPizzaImageUri } from './ProductListItem';
 

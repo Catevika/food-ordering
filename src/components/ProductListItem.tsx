@@ -1,5 +1,5 @@
 import Colors from '@/constants/Colors';
-import { Tables } from '@/database.types';
+import { Tables } from '@/types';
 import { Link, useSegments, type ExternalPathString } from 'expo-router';
 import { Image, Pressable, StyleSheet, Text } from 'react-native';
 

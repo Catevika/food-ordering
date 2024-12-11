@@ -1,21 +1,18 @@
-import { orders } from '@/assets/data/orders';
+import { useOrderDetails } from '@/api/orders';
 import OrderItemListItem from '@/components/OrderItemListItem';
 import SingleOrderItem from '@/components/SingleOrderItem';
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { FlatList, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Text } from "react-native";
 
-const orderDetailsScreen = () => {
-  const { id } = useLocalSearchParams();
+const OrderProfileDetailsScreen = () => {
+  const { id: idString } = useLocalSearchParams();
+  const id = parseFloat(typeof idString === 'string' ? idString : idString[0]);
 
-  const order = orders.find(o => o.id.toString() === id);
+  const { data: order, isLoading, error } = useOrderDetails(id);
 
-  if (!order || !order.order_items) {
-    return (
-      <View>
-        <Text>Order not found</Text>
-      </View>
-    );
-  }
+  if (isLoading) return <ActivityIndicator />;
+  if (error) return <Text>Failed to fetch order</Text>;
+  if (!order) return <Text>Order not found</Text>;
 
   return (
     <>
@@ -24,7 +21,7 @@ const orderDetailsScreen = () => {
 
       <FlatList
         data={order.order_items}
-        renderItem={({ item }) => <OrderItemListItem order={item} />}
+        renderItem={({ item }) => <OrderItemListItem item={item} />}
         contentContainerStyle={{ gap: 10, paddingInline: 20 }}
         keyExtractor={(item) => item.id.toString()}
       />
@@ -32,4 +29,4 @@ const orderDetailsScreen = () => {
   );
 };
 
-export default orderDetailsScreen;
+export default OrderProfileDetailsScreen;

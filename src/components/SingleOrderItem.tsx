@@ -1,8 +1,10 @@
+import type { Tables } from '@/types';
 import daysjs from 'dayjs';
 import { StyleSheet, Text, View } from "react-native";
-import type { Order } from 'types';
-
-const SingleOrderItem = ({ order }: { order: Order; }) => {
+type OrderItemProps = {
+  order: Tables<'orders'>;
+};
+const SingleOrderItem = ({ order }: OrderItemProps) => {
 
   return (
     <View style={styles.container}>

@@ -4,7 +4,7 @@ import supabase from '@/lib/supabase';
 import { Link, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { BackHandler, StyleSheet, Text, TextInput, View } from 'react-native';
+import { BackHandler, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const SignInScreen = () => {
   const [email, setEmail] = useState('');
@@ -35,7 +35,8 @@ const SignInScreen = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar style='auto' />
+      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+
       <Stack.Screen options={{ title: 'Sign in', headerBackVisible: false }} />
 
       <Text style={styles.label}>Email</Text>

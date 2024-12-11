@@ -1,6 +1,6 @@
+import type { ModalProps } from '@/types';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import type { ModalProps } from 'types';
 
 const AlertModal = ({ modalVisible, setModalVisible, animation, title, message, buttonStyle1, buttonStyle2, textStyle1, textStyle2, buttonText1, buttonText2, action1, action2 }: ModalProps) => {
 

@@ -4,7 +4,7 @@ import supabase from '@/lib/supabase';
 import { FontAwesome } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useCallback } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 
 const SignOutButton = () => {
   const colorScheme = useColorScheme();
@@ -31,20 +31,5 @@ const SignOutButton = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    backgroundColor: Colors.light.tint,
-    padding: 15,
-    alignItems: 'center',
-    borderRadius: 100,
-    marginVertical: 10,
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: 'white',
-  },
-});
 
 export default SignOutButton;

@@ -1,4 +1,5 @@
 import supabase from '@/lib/supabase';
+import type { Profile } from '@/types';
 import { Session } from '@supabase/supabase-js';
 import {
   PropsWithChildren,
@@ -7,7 +8,6 @@ import {
   useEffect,
   useState,
 } from 'react';
-import type { Profile } from 'types';
 
 type AuthData = {
   session: Session | null;

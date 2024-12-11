@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: Colors.light.tint,
+    textAlign: 'center',
   },
   label: {
     fontSize: 16,

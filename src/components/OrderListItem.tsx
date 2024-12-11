@@ -1,18 +1,16 @@
+import type { Tables } from '@/types';
 import daysjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Link, useSegments, type ExternalPathString } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import type { Order } from 'types';
-
 type OrderListItemProps = {
-  order: Order;
+  order: Tables<'orders'>;
 };
 
 daysjs.extend(relativeTime);
 
 const OrderListItem = ({ order }: OrderListItemProps) => {
   const segments = useSegments();
-
   const orderUrl = `/${segments[0]}/orders/${order.id.toString()}` as ExternalPathString;
 
   return (

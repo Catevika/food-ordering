@@ -1,12 +1,23 @@
-import { orders } from '@/assets/data/orders';
+import { useAdminOrderList } from '@/api/orders';
 import OrderListItem from '@/components/OrderListItem';
 import { StatusBar } from 'expo-status-bar';
-import { FlatList } from 'react-native';
+import { ActivityIndicator, FlatList, Platform, Text } from 'react-native';
 
-export default function MenuIndex() {
+export default function OrderAdminArchiveScreen() {
+  const { data: orders, isLoading, error } = useAdminOrderList({ archived: true });
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
+  if (error) {
+    return <Text>Failed to fetch orders</Text>;
+  }
+
   return (
     <>
-      <StatusBar style='auto' />
+      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+
       <FlatList
         data={orders}
         renderItem={({ item }) => <OrderListItem order={item} />}

@@ -3,7 +3,7 @@ import supabase from '@/lib/supabase';
 import { useAuth } from '@/providers/AuthProvider';
 import { Link, Redirect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import Button from '../components/Button';
 
 const index = () => {
@@ -19,7 +19,7 @@ const index = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar style='auto' />
+      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       {
         isAdmin ?
           <Link href={'/(admin)'} asChild>

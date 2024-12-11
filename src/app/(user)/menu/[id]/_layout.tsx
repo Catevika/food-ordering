@@ -2,10 +2,10 @@ import { useProduct } from '@/api/products';
 import Button from '@/components/Button';
 import { defaultPizzaImageUri } from '@/components/ProductListItem';
 import { useCart } from '@/providers/CartProvider';
+import type { PizzaSize } from '@/types';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from "react-native";
-import type { PizzaSize } from 'types';
 
 const sizes: PizzaSize[] = ['S', 'M', 'L', 'XL'];
 

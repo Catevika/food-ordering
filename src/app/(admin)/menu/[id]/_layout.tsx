@@ -1,9 +1,10 @@
 import { useProduct } from '@/api/products';
 import { defaultPizzaImageUri } from '@/components/ProductListItem';
+import RemoteImage from '@/components/RemoteImage';
 import Colors from '@/constants/Colors';
 import { FontAwesome } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from "react-native";
 
 const productDetailsScreen = () => {
   const router = useRouter();
@@ -33,7 +34,7 @@ const productDetailsScreen = () => {
         ),
       }} />
       <Stack.Screen options={{ title: product.name }} />
-      <Image source={{ uri: product.image || defaultPizzaImageUri }} style={styles.image} />
+      <RemoteImage path={product.image} fallback={defaultPizzaImageUri} style={styles.image} />
 
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>${product.price.toFixed(2)}</Text>

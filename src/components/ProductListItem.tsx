@@ -1,7 +1,8 @@
+import RemoteImage from '@/components/RemoteImage';
 import Colors from '@/constants/Colors';
 import { Tables } from '@/types';
 import { Link, useSegments, type ExternalPathString } from 'expo-router';
-import { Image, Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 export const defaultPizzaImageUri = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png';
 
@@ -16,8 +17,9 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
   return (
     <Link href={productUrl} asChild>
       <Pressable style={styles.container}>
-        <Image
-          source={{ uri: product.image || defaultPizzaImageUri }}
+        <RemoteImage
+          path={product.image}
+          fallback={defaultPizzaImageUri}
           alt={product.name}
           style={styles.image}
           resizeMode="contain"

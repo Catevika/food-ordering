@@ -1,18 +1,18 @@
-import type { Database } from '@/database.types';
-import { createClient } from '@supabase/supabase-js';
-import * as SecureStore from 'expo-secure-store';
-import 'react-native-url-polyfill/auto';
+import type { Database } from "@/database.types";
+import { createClient } from "@supabase/supabase-js";
+import * as SecureStore from "expo-secure-store";
+import "react-native-url-polyfill/auto";
 
 const { EXPO_PUBLIC_SUPABASE_URL, EXPO_PUBLIC_SUPABASE_ANON_KEY } = process.env;
 
 if (!EXPO_PUBLIC_SUPABASE_URL) {
   throw new Error(
-    'Missing environment variable: EXPO_PUBLIC_SUPABASE_URL'
+    "Missing environment variable: EXPO_PUBLIC_SUPABASE_URL",
   );
 }
 if (!EXPO_PUBLIC_SUPABASE_ANON_KEY) {
   throw new Error(
-    'Missing environment variable: EXPO_PUBLIC_SUPABASE_ANON_KEY'
+    "Missing environment variable: EXPO_PUBLIC_SUPABASE_ANON_KEY",
   );
 }
 
